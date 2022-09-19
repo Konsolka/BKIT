@@ -1,18 +1,7 @@
-from collections import Counter
 from gen_random import gen_random
-from collections import Counter
 
 class Unique(object):
     def __init__(self, items, ignore_case=False):
-        # Нужно реализовать конструктор
-        # В качестве ключевого аргумента, конструктор должен принимать bool-параметр ignore_case,
-        # в зависимости от значения которого будут считаться одинаковыми строки в разном регистре
-        # Например: ignore_case = True, Aбв и АБВ - разные строки
-        #           ignore_case = False, Aбв и АБВ - одинаковые строки, одна из которых удалится
-        # По-умолчанию ignore_case = False
-        # self.items = list(Counter(items).keys())
-        # if ignore_case:
-        #     self.items = self.if_ignore_case_true()
         self.c = 0
         self.ignore_case=ignore_case
         self.items = self.get_unique(items, ignore_case)
@@ -50,13 +39,17 @@ def print_test(test):
     for i in test:
         print(i)
 
+import os
+
 if __name__ == '__main__':
-    data =[1,3,4,3, 'S']
-    test = Unique(data, True)
+    data =[1,3,4,3, 'S', True]
+    test = Unique(data)
     print_test(test)
-    data = gen_random(5, 1, 3)
-    test = Unique(data, True)
+    data = gen_random(10, 1, 3)
+    test = Unique(data)
     print_test(test)
     data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
+    test = Unique(data, True)
+    data = ['as', 'aS', 'Aa', 'AA', 'aA', 'aa', 5]
     test = Unique(data, True)
     print_test(test)

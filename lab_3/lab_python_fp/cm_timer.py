@@ -7,7 +7,9 @@ class cm_timer1:
     def __enter__(self):
         self.t = perf_counter()
     def __exit__(self, type, value, tranceback):
-        print('exec time = ', round(perf_counter() - self.t, 4))
+        ex_time = perf_counter() - self.t
+        print('exec time = ', round(ex_time, 4))
+        return ex_time
 
 @contextmanager
 def cm_timer2() -> float:
