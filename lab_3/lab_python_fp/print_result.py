@@ -1,9 +1,7 @@
 def print_result(func):
     def inner(*args, **kwargs):
         res = func(*args, **kwargs)
-        print('-'*50)
         print(func.__name__)
-        print('-'*10)
         if isinstance(res, dict):
             for k, v in res.items():
                 print(k, '=', v)
