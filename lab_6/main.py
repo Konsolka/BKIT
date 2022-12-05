@@ -69,7 +69,7 @@ async def process_is_cat(message: types.Message, state: FSMContext):
             md.text(
                 md.text('Hi, '),
                 md.bold(data['name']),
-                md.text(' your fact: '),
+                md.text(' fact: '),
                 md.text(get_cat_fact() if message.text == 'Cat' else get_dog_fact())
             )
     )        
