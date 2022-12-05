@@ -48,7 +48,6 @@ async def process_name(message: types.Message, state: FSMContext):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
     markup.add('Cat', 'Dog', 'None of that')
     await Form.next()
-    print('1'*100)
     await message.reply('Are you cat or god lover?', reply_markup=markup)
 
 @dp.message_handler(lambda message: message.text not in ['Cat', 'Dog', 'None of that'], state=Form.is_cat)
@@ -60,7 +59,6 @@ async def process_is_cat_invalid(message: types.Message):
 async def process_is_cat(message: types.Message, state: FSMContext):
     if message.text == 'None of that':
         await state.finish()
-        markup = types.ReplyKeyboardRemove()
         return await bot.send_message(
             message.chat.id,
             "Lol what are you doing here? Change your mind and try again later")
@@ -75,6 +73,7 @@ async def process_is_cat(message: types.Message, state: FSMContext):
                 md.text(get_cat_fact() if message.text == 'Cat' else get_dog_fact())
             )
     )        
+    markup = types.ReplyKeyboardRemove()
     await state.finish()
 
 if __name__ == '__main__':
